@@ -3,9 +3,9 @@ import tweepy, os
 BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 #inicializa o client
 client = tweepy.Client(BEARER_TOKEN)
-username = ""
+username = input("Digite o username: @")
 #quantidade dentre 4 e 99
-quantidade = int(input("Digite a quantidade entre 4 e "))
+quantidade = int(input("Digite a quantidade entre 4 e 99: "))
 user = client.get_user(username=username)
 user_id = user.data.id
 tweets = client.get_users_tweets(id=user_id, max_results=quantidade+1)
