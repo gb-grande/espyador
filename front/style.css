@@ -8,6 +8,7 @@ body {
 #resultado {
     display: flex;
     margin-top: 20px;
+    word-wrap: break-word;
     align-items: center;
     justify-content: center;
 }
