@@ -1,5 +1,4 @@
 import tweepy, os
-from nltk.corpus import stopwords
 
 def pegar(username, quantidade):
     # pega o token
