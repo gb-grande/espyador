@@ -9,21 +9,28 @@ async function addPalavras(e) {
     if (usuario[0] == '@') usuario = usuario.substr(1);
 
     $('#res').text(`Palavras de ${usuario}:`);
-
+    $('#res').append('<div class="loader"></div>');
+    
     let palavras = await pegar_palavras(usuario);
     
+    if (!palavras) {
+        $("#res").text('')
+        return;
+    }
     
-    $('#res').append("<p id='words' class='words'></p>");
 
-    Object.entries(palavras).forEach(([key,value]) => {
+    $('#res').text(`Palavras de ${usuario}:`);
+    $('#res').append("<p id='words' class='words'></p>");
+    const sorta = Object.keys(palavras).sort(function(a,b){return palavras[b]-palavras[a]})
+
+
+    sorta.forEach((key) => {
+        value = palavras[key];
         $('.words').append($("<span></span>").css({
-            "font-size": normalizar(palavras, value, 10, 100)
-        }
-        ).text(key).hover(function() {
-            $('#vezes').text(`Repetida ${value} ${value > 1 ? 'vezes' : 'vez'}`);
-        }, function () {
-            $('#vezes').text("");
-        }))
+            "font-size": normalizar(palavras, sorta, value, 20, 50)
+        }).text(key).click(() => {
+            $('#vezes').text(`Repetida ${palavras[key]} ${palavras[key] > 1 ? 'vezes' : 'vez'}`);
+        }));
     })
     
 }
@@ -37,14 +44,8 @@ async function pegar_palavras(user) {
     return json;
 }
 
-function normalizar(palavras, tamanho, min, max) {
-    const maior = palavras[Object.keys(palavras)[0]];
-    let max = 0;
-    let kmax;
-    for(let key in palavras){
-        if( palavras[key])
-    }
-
+function normalizar(palavras, sortado, tamanho, min, max) {
+    const maior = palavras[sortado[0]];
     return Math.floor((tamanho / maior * (max - min)) + min);
 }
 
@@ -52,9 +53,4 @@ window.onload = ()=>{
     let button = document.getElementById("submit");
     console.log(button);
     button.addEventListener("click", addPalavras);
-
-
-
-
-
 }
