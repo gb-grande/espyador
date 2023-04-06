@@ -8,15 +8,18 @@ body {
 #resultado {
     display: flex;
     margin-top: 20px;
+    word-wrap: break-word;
     align-items: center;
     justify-content: center;
 }
 
-#resultado div {
+#resultado > div {
     padding: 15px;
     width: 500px;
     height: 500px;
     border-style: solid;
+    overflow-y: scroll;
+    border-radius: 20px;
 }
 
 #words {
@@ -31,6 +34,8 @@ span {
     animation: fadeIn 1s;
     margin-right: 20px;
     transition: .2s;
+    width: -moz-fit-content;
+    width: fit-content;
 }
 
 @keyframes fadeIn {
@@ -38,6 +43,22 @@ span {
     100% { opacity: 1; }
 }
 
-span:hover {
+span:active {
     scale: 1.2;
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3f3f3f; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin-top: calc(50% - 60px);
+    margin-left: calc(50% - 30px);
+    animation: spin 1s linear infinite;
+}
+    
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

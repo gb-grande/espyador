@@ -1,2 +1,4 @@
 .env
-.env_secrets
+/venv
+/env
+__pycache__

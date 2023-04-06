@@ -6,17 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <title>Document</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="front/style.css">
+        <script defer src="front/main.js"></script>
     </head>
     <body>
-        <script src="main.js"></script>
         <h1>ESPyADOR</h1>
-        
-        <form onsubmit="legal(event)">
             <label for="user">Digite o <i>@</i> do perfil:</label><br>
             <input id="user" type="text" name="user" placeholder="@usuario"></input>
             <input type="submit" id="submit" value="pesquisar"></input>
-        </form>
         <div id="resultado">
             <div id="res"></div>
         </div>
